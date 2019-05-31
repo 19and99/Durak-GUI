@@ -1,0 +1,14 @@
+C:\Users\Cash\Desktop\GUI\CardsGUI\bin\Debug\CardsGUI.exe.config
+C:\Users\Cash\Desktop\GUI\CardsGUI\bin\Debug\CardsGUI.exe
+C:\Users\Cash\Desktop\GUI\CardsGUI\bin\Debug\CardsGUI.pdb
+C:\Users\Cash\Desktop\GUI\CardsGUI\obj\Debug\CardsGUI.csprojAssemblyReference.cache
+C:\Users\Cash\Desktop\GUI\CardsGUI\obj\Debug\CardsGUI.Properties.Resources.resources
+C:\Users\Cash\Desktop\GUI\CardsGUI\obj\Debug\CardsGUI.csproj.GenerateResource.cache
+C:\Users\Cash\Desktop\GUI\CardsGUI\obj\Debug\CardsGUI.csproj.CoreCompileInputs.cache
+C:\Users\Cash\Desktop\GUI\CardsGUI\obj\Debug\CardsGUI.exe
+C:\Users\Cash\Desktop\GUI\CardsGUI\obj\Debug\CardsGUI.pdb
+C:\Users\Cash\Desktop\GUI\CardsGUI\bin\Debug\Cards.dll
+C:\Users\Cash\Desktop\GUI\CardsGUI\bin\Debug\Cards.pdb
+C:\Users\Cash\Desktop\GUI\CardsGUI\obj\Debug\CardsGUI.csproj.CopyComplete
+C:\Users\Cash\Desktop\GUI\CardsGUI\obj\Debug\CardsGUI.CardForm.resources
+C:\Users\Cash\Desktop\GUI\CardsGUI\obj\Debug\CardsGUI.GameGUI.resources

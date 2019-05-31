@@ -1,0 +1,10 @@
+C:\Users\Cash\Desktop\GUI\CardsConsole\bin\Debug\CardsConsole.exe.config
+C:\Users\Cash\Desktop\GUI\CardsConsole\bin\Debug\CardsConsole.exe
+C:\Users\Cash\Desktop\GUI\CardsConsole\bin\Debug\CardsConsole.pdb
+C:\Users\Cash\Desktop\GUI\CardsConsole\bin\Debug\Cards.dll
+C:\Users\Cash\Desktop\GUI\CardsConsole\bin\Debug\Cards.pdb
+C:\Users\Cash\Desktop\GUI\CardsConsole\obj\Debug\CardsConsole.csprojAssemblyReference.cache
+C:\Users\Cash\Desktop\GUI\CardsConsole\obj\Debug\CardsConsole.csproj.CoreCompileInputs.cache
+C:\Users\Cash\Desktop\GUI\CardsConsole\obj\Debug\CardsConsole.csproj.CopyComplete
+C:\Users\Cash\Desktop\GUI\CardsConsole\obj\Debug\CardsConsole.exe
+C:\Users\Cash\Desktop\GUI\CardsConsole\obj\Debug\CardsConsole.pdb

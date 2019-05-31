@@ -1,0 +1,6 @@
+C:\Users\Cash\Desktop\GUI\Cards\bin\Debug\Cards.dll
+C:\Users\Cash\Desktop\GUI\Cards\bin\Debug\Cards.pdb
+C:\Users\Cash\Desktop\GUI\Cards\obj\Debug\Cards.csprojAssemblyReference.cache
+C:\Users\Cash\Desktop\GUI\Cards\obj\Debug\Cards.csproj.CoreCompileInputs.cache
+C:\Users\Cash\Desktop\GUI\Cards\obj\Debug\Cards.dll
+C:\Users\Cash\Desktop\GUI\Cards\obj\Debug\Cards.pdb
