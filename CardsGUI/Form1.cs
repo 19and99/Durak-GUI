@@ -32,27 +32,44 @@ namespace CardsGUI
                 case Suit.diamond: kozarPic.Image = Properties.Resources.diamond1; break;
             }
             kolodCount.Text = g.kolod.Cards.Count.ToString();
+           
+            if (g.userAttacks) { Info.Text = "You have smaller kozr. Start"; }
+            else
+            {
+                Info.Text = "Computer has smaller kozr. It starts";
+                g.computerThrows();
+            }
             UpdateCards();
         }
 
-        private void Card_Click(object sender, EventArgs e)
+        private async void Card_Click(object sender, EventArgs e)
         {
-            CardForm card = sender as CardForm;
-            String suit = card.Controls.Find("Suit", false)[0].Text;
+            PictureBox p = sender as PictureBox;
+            CardForm card = p.Parent as CardForm;
+            String suit = card.Controls.Find("Suit", false)[0].AccessibleDescription;
             int rank;
-            Int32.TryParse(card.Controls.Find("Rank", false)[0].Text, out rank);
+            if (card.Controls.Find("Rank", false)[0].Text == "A") rank = 14;
+            else Int32.TryParse(card.Controls.Find("Rank", false)[0].Text, out rank);
 
-            g.userThrows(suit, rank);
+            if (g.userThrows(suit, rank))
+            {
+                Info.Text = g.info;
+                UpdateCards();
+                await Task.Delay(1200);
+                g.computerThrows();
+                Info.Text = g.info;
+                UpdateCards();
+            }
             Info.Text = g.info;
-            UpdateCards();
-
-            g.computerThrows();
-            Info.Text = g.info;
-            UpdateCards();
             kolodCount.Text = g.kolod.Cards.Count.ToString();
 
         }
-
+        private void Current_Card_Click(object sender, EventArgs e)
+        {
+            PictureBox p = sender as PictureBox;
+            CardForm card = p.Parent as CardForm;
+            card.BringToFront();
+        }
         private void DrawUserCards()
         {
             int drawX = 15;
@@ -62,16 +79,27 @@ namespace CardsGUI
             {
                 CardForm card1 = new CardForm();
                 card1.Location = new Point(drawX, drawY);
+                PictureBox p = card1.Controls.Find("Suit", false)[0] as PictureBox;
                 switch (c.Suit)
                 {
-                    case Suit.club: card1.Controls.Find("Suit", false)[0].BackgroundImage = Properties.Resources.club1; break;
-                    case Suit.spade: card1.Controls.Find("Suit", false)[0].BackgroundImage =  Properties.Resources.spade1; break;
-                    case Suit.heart: card1.Controls.Find("Suit", false)[0].BackgroundImage = Properties.Resources.heart1; break;
-                    case Suit.diamond: card1.Controls.Find("Suit", false)[0].BackgroundImage = Properties.Resources.diamond1; break;
+                    case Suit.club: p.BackgroundImage = Properties.Resources.club1; p.AccessibleDescription = "club"; break;
+                    case Suit.spade: p.BackgroundImage =  Properties.Resources.spade1; p.AccessibleDescription = "spade"; break;
+                    case Suit.heart: p.BackgroundImage = Properties.Resources.heart1; p.AccessibleDescription = "heart"; break;
+                    case Suit.diamond: p.BackgroundImage = Properties.Resources.diamond1; p.AccessibleDescription = "diamond"; break;
                 }
                 
                 card1.Controls.Find("Rank", false)[0].Text = c.Rank.ToString();
-                card1.Click += Card_Click;
+                if (c.Rank == 14) {
+                    card1.Controls.Find("Rank", false)[0].Text = "A";
+                }
+                switch (c.Rank)
+                {
+                    case 11: card1.Controls.Find("CharacterPic", false)[0].BackgroundImage = Properties.Resources.valet; break;
+                    case 12: card1.Controls.Find("CharacterPic", false)[0].BackgroundImage = Properties.Resources.dama; break;
+                    case 13: card1.Controls.Find("CharacterPic", false)[0].BackgroundImage = Properties.Resources.korol; break;
+                }
+                if (c.Rank > 10 && c.Rank < 14) card1.Controls.Find("Rank", false)[0].Visible = false;
+                card1.Controls.Find("CharacterPic", false)[0].Click += Card_Click;
                 Controls.Add(card1);
                 drawX += 105;
                
@@ -85,13 +113,33 @@ namespace CardsGUI
             foreach (Card c in g.currentDeck.Cards)
             {
                 CardForm card1 = new CardForm();
-                card1.Name = "card";
                 card1.Location = new Point(drawX, drawY);
-                card1.Controls.Find("Suit", false)[0].Text = c.Suit.ToString();
+                switch (c.Suit)
+                {
+                    case Suit.club: card1.Controls.Find("Suit", false)[0].BackgroundImage = Properties.Resources.club1; break;
+                    case Suit.spade: card1.Controls.Find("Suit", false)[0].BackgroundImage = Properties.Resources.spade1; break;
+                    case Suit.heart: card1.Controls.Find("Suit", false)[0].BackgroundImage = Properties.Resources.heart1; break;
+                    case Suit.diamond: card1.Controls.Find("Suit", false)[0].BackgroundImage = Properties.Resources.diamond1; break;
+                }
+
                 card1.Controls.Find("Rank", false)[0].Text = c.Rank.ToString();
+                if (c.Rank == 14)
+                {
+                    card1.Controls.Find("Rank", false)[0].Text = "A";
+                }
+                switch (c.Rank)
+                {
+                    case 11: card1.Controls.Find("CharacterPic", false)[0].BackgroundImage = Properties.Resources.valet; break;
+                    case 12: card1.Controls.Find("CharacterPic", false)[0].BackgroundImage = Properties.Resources.dama; break;
+                    case 13: card1.Controls.Find("CharacterPic", false)[0].BackgroundImage = Properties.Resources.korol; break;
+                }
+                if (c.Rank > 10 && c.Rank < 14) card1.Controls.Find("Rank", false)[0].Visible = false;
+                card1.Controls.Find("CharacterPic", false)[0].Click += Current_Card_Click;
                 Controls.Add(card1);
-                //if (even) drawX += 32; else
-                drawX += 105;
+                card1.BringToFront();
+                if (even) { drawX += 32; even = false; }
+                else
+                { drawX += 105; even = true; }
             }
         }
 

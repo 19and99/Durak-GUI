@@ -95,7 +95,9 @@
       <Name>Cards</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\dama.png" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Resources\club1.png" />
   </ItemGroup>
@@ -107,6 +109,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\spade1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\korol.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\valet.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

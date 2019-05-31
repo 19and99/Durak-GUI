@@ -28,60 +28,63 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.Rank = new System.Windows.Forms.Label();
+            this.CharacterPic = new System.Windows.Forms.PictureBox();
             this.Suit = new System.Windows.Forms.PictureBox();
-            this.Character = new System.Windows.Forms.PictureBox();
+            this.Rank = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.CharacterPic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Suit)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Character)).BeginInit();
             this.SuspendLayout();
+            // 
+            // CharacterPic
+            // 
+            this.CharacterPic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.CharacterPic.Location = new System.Drawing.Point(3, 3);
+            this.CharacterPic.Name = "CharacterPic";
+            this.CharacterPic.Size = new System.Drawing.Size(84, 114);
+            this.CharacterPic.TabIndex = 3;
+            this.CharacterPic.TabStop = false;
+            // 
+            // Suit
+            // 
+            this.Suit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Suit.Location = new System.Drawing.Point(3, 3);
+            this.Suit.Name = "Suit";
+            this.Suit.Size = new System.Drawing.Size(24, 24);
+            this.Suit.TabIndex = 4;
+            this.Suit.TabStop = false;
             // 
             // Rank
             // 
             this.Rank.AutoSize = true;
-            this.Rank.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Rank.Location = new System.Drawing.Point(3, 67);
+            this.Rank.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Rank.Location = new System.Drawing.Point(19, 40);
             this.Rank.Name = "Rank";
-            this.Rank.Size = new System.Drawing.Size(36, 39);
-            this.Rank.TabIndex = 1;
+            this.Rank.Size = new System.Drawing.Size(51, 55);
+            this.Rank.TabIndex = 5;
             this.Rank.Text = "6";
-            // 
-            // Suit
-            // 
-            this.Suit.Location = new System.Drawing.Point(3, 3);
-            this.Suit.Name = "Suit";
-            this.Suit.Size = new System.Drawing.Size(35, 35);
-            this.Suit.TabIndex = 2;
-            this.Suit.TabStop = false;
-            // 
-            // Character
-            // 
-            this.Character.Location = new System.Drawing.Point(3, 42);
-            this.Character.Name = "Character";
-            this.Character.Size = new System.Drawing.Size(84, 78);
-            this.Character.TabIndex = 3;
-            this.Character.TabStop = false;
             // 
             // CardForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.Character);
-            this.Controls.Add(this.Suit);
+            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.Rank);
+            this.Controls.Add(this.Suit);
+            this.Controls.Add(this.CharacterPic);
             this.Name = "CardForm";
-            this.Size = new System.Drawing.Size(90, 120);
+            this.Size = new System.Drawing.Size(88, 118);
             this.Load += new System.EventHandler(this.CardForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.CharacterPic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Suit)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Character)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Label Rank;
+        private System.Windows.Forms.PictureBox CharacterPic;
         private System.Windows.Forms.PictureBox Suit;
-        private System.Windows.Forms.PictureBox Character;
+        private System.Windows.Forms.Label Rank;
     }
 }

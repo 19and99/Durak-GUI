@@ -50,7 +50,7 @@ namespace Cards
             List<Card> shuffled = new List<Card>(count);
             Random random = new Random();
             for (int i = 0; i < count; ++i) {
-                int index = random.Next(0, cards.Count - 1);
+                int index = random.Next(0, cards.Count);
                 shuffled.Add(cards[index]);
                 cards.RemoveAt(index);
             }
@@ -127,7 +127,8 @@ namespace Cards
                     min = c.Rank;
                 }
             }
-            if (min == card.Rank) {
+            if (card.Suit == kozr) return null;
+            else if (min == card.Rank) {
                 ret = GetMinimumSuit(kozr);
                 if (ret == null) return null; 
             }

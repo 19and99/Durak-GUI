@@ -20,14 +20,17 @@ namespace Cards
 
 
         public Game()
-        {
-            for (int i = 0; i < 4; ++i) {
-                for (int j = 6; j < 15; ++j) {
+        {   
+        }
+        public void Start() {
+            for (int i = 0; i < 4; ++i)
+            {
+                for (int j = 6; j < 15; ++j)
+                {
                     kolod.AddCard(j, (Suit)i);
                 }
             }
-        }
-        public void Start() {
+
             kolod.shuffle();
             kolod.Deliver(userDeck, computerDeck);
             kozr = kolod.Cards[0].Suit;
@@ -45,7 +48,6 @@ namespace Cards
                     }
                 }
             }
-            userAttacks = true;
         }
 
         public void NextMove() {
@@ -56,12 +58,12 @@ namespace Cards
             else info = "Your turn";
         }
 
-        public void userThrows(String s,int rank)
+        public bool userThrows(String s,int rank)
         {
             
             Suit suit = (Suit)Enum.Parse(typeof(Suit), s,true);
             Card c = new Card(rank, suit);
-            if (!userDeck.Cards.Contains(c)) return;
+            if (!userDeck.Cards.Contains(c)) return false;
             if (userAttacks)
             {
                 if (currentDeck.Cards.Count == 0)
@@ -79,9 +81,9 @@ namespace Cards
                             currentDeck.AddCard(c);
                             userDeck.Remove(c);
                         }
-                        else info = "Throw a valid card";
+                        else { info = "Throw a valid card"; return false; }
                     }
-                    else info = "Wait until computer make move";
+                    else { info = "Wait until computer make move"; return false; }
                 }
             }
             else
@@ -92,14 +94,19 @@ namespace Cards
                     currentDeck.AddCard(c);
                     userDeck.Remove(c);
                 }
-                else info = "That card doesn't cover the thrown one";
+                else
+                {
+                    info = "That card doesn't cover the thrown one"; return false;
+                }
             }
 
             if (kolod.Cards.Count == 0 && userDeck.Cards.Count == 0)
             {
                 GameOver();
                 info = "Game is over. You have won";
+                return false;
             }
+            return true;
         }
 
         public void computerThrows()
@@ -121,28 +128,37 @@ namespace Cards
             }
             else
             {
-
-                bool canThrow = false;
-                foreach (Card c in computerDeck.Cards)
+                if (currentDeck.Cards.Count == 0)
                 {
-                    if (currentDeck.Cards.Count == 0 || currentDeck.HasRank(c.Rank))
+                    Card c = computerDeck.minCard(
+                        );
+                    currentDeck.AddCard(c);
+                    computerDeck.Remove(c);
+                }
+                if (currentDeck.Cards.Count % 2 == 0)
+                {
+                    bool canThrow = false;
+                    foreach (Card c in computerDeck.Cards)
                     {
-                        currentDeck.AddCard(c);
-                        computerDeck.Remove(c);
-                        canThrow = true;
-                        break;
+                        if (currentDeck.Cards.Count == 0 || currentDeck.HasRank(c.Rank))
+                        {
+                            currentDeck.AddCard(c);
+                            computerDeck.Remove(c);
+                            canThrow = true;
+                            break;
+                        }
+                    }
+                    if (!canThrow)
+                    {
+                        Bita();
                     }
                 }
-                if (!canThrow)
-                {
-                    Bita();
-                }
-            }
 
-            if (kolod.Cards.Count == 0 && computerDeck.Cards.Count == 0)
-            {
-                GameOver();
-                info = "Game is over. Computer has won";
+                if (kolod.Cards.Count == 0 && computerDeck.Cards.Count == 0)
+                {
+                    GameOver();
+                    info = "Game is over. Computer has won";
+                }
             }
         }
 
