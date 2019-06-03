@@ -153,12 +153,12 @@ namespace Cards
                         Bita();
                     }
                 }
+            }
 
-                if (kolod.Cards.Count == 0 && computerDeck.Cards.Count == 0)
-                {
-                    GameOver();
-                    info = "Game is over. Computer has won";
-                }
+            if (kolod.Cards.Count == 0 && computerDeck.Cards.Count == 0)
+            {
+                GameOver();
+                info = "Game is over. Computer has won";
             }
         }
 

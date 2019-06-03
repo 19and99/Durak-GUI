@@ -74,7 +74,9 @@ namespace CardsGUI
         {
             int drawX = 15;
             int drawY = 550;
+            int drawShift = 105;
 
+            if (g.userDeck.Cards.Count > 12) { drawShift = 70; }
             foreach (Card c in g.userDeck.Cards)
             {
                 CardForm card1 = new CardForm();
@@ -100,8 +102,10 @@ namespace CardsGUI
                 }
                 if (c.Rank > 10 && c.Rank < 14) card1.Controls.Find("Rank", false)[0].Visible = false;
                 card1.Controls.Find("CharacterPic", false)[0].Click += Card_Click;
+                
                 Controls.Add(card1);
-                drawX += 105;
+                card1.BringToFront();
+                drawX += drawShift;
                
             }
         }
@@ -159,6 +163,7 @@ namespace CardsGUI
                 g.Bita();
                 UpdateCards();
                 kolodCount.Text = g.kolod.Cards.Count.ToString();
+                Info.Text = g.info;
             }
             else { Info.Text = "You cannot make Bita"; }
         }
@@ -168,6 +173,7 @@ namespace CardsGUI
             g.Collect();
             kolodCount.Text = g.kolod.Cards.Count.ToString();
             UpdateCards();
+            Info.Text = g.info;
         }
     }
 }
